@@ -6,6 +6,27 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 def scrape_flashscore_past():
+    """
+    Scrapes past football match data from the Flashscore website for Brazil's Serie B.
+
+    This function uses Selenium to automate a web browser, navigate to the Flashscore 
+    results page for Brazil's Serie B, and extract data for past matches. The extracted 
+    data includes match date, match time, home team, away team, and the results for 
+    both teams. The data is then saved to a CSV file.
+
+    Steps:
+    1. Setup a Firefox web driver and navigate to the Flashscore results page.
+    2. Wait for the page to load.
+    3. Click the "Mostrar mais jogos" button to load more games, if available.
+    4. Extract game data from the loaded page.
+    5. Save the extracted data to a CSV file.
+
+    Returns:
+        None
+
+    Raises:
+        Exception: If the "Mostrar mais jogos" button is not found or no more games to load.
+    """
     # Setup Chrome and navigate to the webpage
     driver = webdriver.Firefox()
     driver.get("https://www.flashscore.com.br/futebol/brasil/serie-b/resultados/")

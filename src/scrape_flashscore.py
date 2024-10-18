@@ -6,7 +6,15 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 def scrape_game_data():
-    """
+     """
+    waits for the page to load, extracts the game data, and saves it to a CSV file.
+    The extracted data includes:
+    - Match Date
+    - Match Time
+    - Home Team
+    - Away Team
+    The data is saved to 'out/games_to_play.csv'.
+   
     Scrapes game data from a website and saves it to a CSV file.
 
     This function uses Selenium to automate web scraping. It navigates to a specific webpage,

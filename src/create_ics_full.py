@@ -7,6 +7,15 @@ from icalendar import Calendar, Event
 from pytz import timezone
 
 def csv_to_ics(games_played_csv_file, games_to_play_csv_file, ics_file):
+    """
+    Converts CSV files containing game information into an ICS calendar file.
+    Args:
+        games_played_csv_file (str): Path to the CSV file containing games that have already been played.
+        games_to_play_csv_file (str): Path to the CSV file containing games that are yet to be played.
+        ics_file (str): Path to the output ICS file.
+    The function reads the provided CSV files, filters the games involving 'Ponte Preta', and creates calendar events for each game. 
+    The events are then saved to the specified ICS file.
+    """
     # Create a new Calendar
     cal = Calendar()
     
