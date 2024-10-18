@@ -70,4 +70,4 @@ def csv_to_ics(games_played_csv_file, games_to_play_csv_file, ics_file):
 
     print(f'Calendar saved to {ics_file}')
 
-csv_to_ics('games_played.csv', 'games_to_play.csv', 'calendar_ponte_preta_serie_b.ics')
+csv_to_ics('out/games_played.csv', 'out/games_to_play.csv', 'calendar_ponte_preta_serie_b.ics')

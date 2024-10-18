@@ -4,14 +4,6 @@ import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import firebase_admin
-from firebase_admin import credentials, firestore
-
-# Use a service account
-cred = credentials.Certificate('./serviceAccountKey.json')
-firebase_admin.initialize_app(cred)
-
-db = firestore.client()
 
 def scrape_flashscore_past():
     # Setup Chrome and navigate to the webpage
@@ -56,7 +48,6 @@ def scrape_flashscore_past():
         # Create a dictionary and append it to the game_data list
         game_dict = {'Match Date': match_date, 'Match Time': match_time, 'Home Team': team_home, 'Away Team': team_away, 'Result Home': match_result_home, 'Result Away': match_result_away}
         game_data.append(game_dict)
-        db.collection('games_played').add(game_dict)
 
     # Close the driver
     driver.quit()
@@ -65,7 +56,7 @@ def scrape_flashscore_past():
     df = pd.DataFrame(game_data)
 
     # Save the DataFrame to a CSV file
-    df.to_csv('games_played.csv', index=False)
+    df.to_csv('out/games_played.csv', index=False)
 
     print('Game data extracted and saved to games_played.csv')
 
